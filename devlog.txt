@@ -1,0 +1,27 @@
+Nov 27 2020
+
+I did an acid test with the HX711 and a 1kg rated load cell.  It works.
+Between the HX711 there are four wires connected and their labelling is
+obvious: red wire to RED connector, green wire to GRN connector etc.
+
+Between the HX711 and the Raspberry Pi are five wires:
+     - VCC connects to a 5V pin on the RPi (board pin 2)
+     - VDD connects to the 3.3V pin on the RPi (board pin 1)
+     - GND connects to a ground pin on the RPi (board pin 6)
+     - DAT connects to the GPIO5 on the RPi (board pin 31)
+     - CLK connects to the GPIO6 on the RPi (board pin 33)
+
+I ran the following git command:
+     $ git clone https://github.com/tatobari/hx711py
+
+Then I ran the "example.py" script --> no load applied yet.
+
+It began printing out values to the terminal.  I put my calibration 
+weight onto the scale (it was a 700g ham) and once it settled out I
+divided that number by 700.  1644800 / 700 = 2350.
+
+Then I went into the "example.py" file (in the git repo I cloned) and 
+inputted that 2350 number in the line of code where it asks for a 
+"referenceUnit" variable.
+
+
