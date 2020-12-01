@@ -24,4 +24,51 @@ Then I went into the "example.py" file (in the git repo I cloned) and
 inputted that 2350 number in the line of code where it asks for a 
 "referenceUnit" variable.
 
+The next thing I want to work on is to see if the buttons still work. 
+I thought I remembered a couple of the connections needing to be 
+resoldered.
 
+Nov 30 2020
+
+I did some work with the buttons and threading in python, and it works,
+but how I have it set up now makes it work slow (I think because I'm 
+trying to run six threading objects at the same time in addition to a 
+tkinter window).
+
+At first I had trouble getting it to register button presses in my 
+threading script.  The short version is that my GPIO PUD was set to UP
+when it should have been set to DOWN.
+
+Next test I want to try is to use the buttons as "arrow" keys that'll
+switch between highlighting four labels on a tkinter window.  The
+script will ID the button that was pressed and take action depending
+on which button it was.
+
+! There is a really good tutorial on this kind of work at this site:
+    engineersgarage.com/raspberrypi
+
+I got the arrow key test working good, but there is still some pretty
+bad lag involved and after looking into it I may need to restructure
+the code to use tkinter's after method instead of using "sleep".
+
+UPDATE: Yeah I think I got the concept figured out, I just need to 
+learn how to execute.  If I can get the polling function to actively
+call itself (instead of the passive "while True:" loop I have now)
+then I should be able to get it polling faster than "time.sleep" is 
+capable of.
+
+The above change worked well in conjunction with setting a default
+value for the "self.b" variable (just a state flag) at the top of 
+the loop.
+
+I made the button formatting a method to save typing.
+
+The next experiment I want to run is to include a label displaying
+the load cell's current value alongside the four arrow labels.
+    - Does the load cell pin need it's own thread?
+    - Would there be a performance hit to just updating the load 
+      cell label whenever the four buttons are polled (so the load
+      cell label would also be updating every 100ms...)
+
+NOTE: If the HX711 is working with the GPIOs in BCIM mode then you
+should also setup the push buttons to work in BCIM mode...

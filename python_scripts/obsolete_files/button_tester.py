@@ -13,10 +13,10 @@ GPIO.setmode(GPIO.BCM)
 
 GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(27, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(5, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(6, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(13, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+#GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+#GPIO.setup(5, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+#GPIO.setup(6, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+#GPIO.setup(13, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 while True:
         if GPIO.input(17) == 0:
@@ -25,17 +25,17 @@ while True:
         elif GPIO.input(27) == 0:
                 print("BCM27 was high!")
                 sleep(0.5)
-        elif GPIO.input(22) == 0:
-                print("BCM22 was high!")
-                sleep(0.5)
-        elif GPIO.input(5) == 0:
-                print("BCM5 was high!")
-                sleep(0.5)
-        elif GPIO.input(6) == 0:
-                print("BCM6 was high!")
-                sleep(0.5)
-        elif GPIO.input(13) == 0:
-                print("BCM13 was high!")
-                sleep(0.5)
+        #elif GPIO.input(22) == 0:
+        #        print("BCM22 was high!")
+        #        sleep(0.5)
+        #elif GPIO.input(5) == 0:
+        #        print("BCM5 was high!")
+        #        sleep(0.5)
+        #elif GPIO.input(6) == 0:
+        #        print("BCM6 was high!")
+        #        sleep(0.5)
+        #elif GPIO.input(13) == 0:
+        #        print("BCM13 was high!")
+        #        sleep(0.5)
 
 GPIO.cleanup()
