@@ -22,7 +22,7 @@ def create_connection(db_file):
 
     return None
 
-active_db = "/home/kirk/Documents/smart_scale_read_write/database_files/smart_scale.db"
+active_db = "/home/pi/Documents/database_files/smart_scale.db"
 
 class SettingsScreen(tk.Frame):
     def __init__(self, parent, controller):

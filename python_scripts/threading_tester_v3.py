@@ -27,7 +27,7 @@ GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 # down arrow
 GPIO.setup(25, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-sleep_time = 100
+sleep_time = 500
 
 
 #_______________________________________________________________________
@@ -57,61 +57,67 @@ class check_button(Thread):
 		Thread.__init__(self)
 		self.b = False
 
+	def clean_and_exit(self):
+		GPIO.cleanup()
+		sys.exit()
+
 	def checkloop(self):
-		self.b = False
-		if GPIO.input(24) == 0:
-			if self.b == False:
-				self.b = True
-				self.format_lbls(left_arrow_lbl)
+		try:
+			self.b = False
+			if GPIO.input(24) == 0:
+				if self.b == False:
+					self.b = True
+					self.format_lbls(left_arrow_lbl)
 
-				mamdouh.after(sleep_time, self.checkloop)
+					mamdouh.after(sleep_time, self.checkloop)
+				else:
+					self.b = False
+					mamdouh.after(sleep_time, self.checkloop)
+				while GPIO.input(24) == 0: pass
+
+			elif GPIO.input(27) == 0:
+				if self.b == False:
+					self.b = True
+					self.format_lbls(right_arrow_lbl)
+
+					mamdouh.after(sleep_time, self.checkloop)
+				else:
+					self.b = False
+					mamdouh.after(sleep_time, self.checkloop)
+				while GPIO.input(27) == 0: pass
+
+			elif GPIO.input(17) == 0:
+				if self.b == False:
+					self.b = True
+					self.format_lbls(up_arrow_lbl)
+
+					mamdouh.after(sleep_time, self.checkloop)
+				else:
+					self.b = False
+					mamdouh.after(sleep_time, self.checkloop)
+				while GPIO.input(17) == 0: pass
+			elif GPIO.input(25) == 0:
+				if self.b == False:
+					self.b = True
+					self.format_lbls(down_arrow_lbl)
+
+					mamdouh.after(sleep_time, self.checkloop)
+				else:
+					self.b = False
+					mamdouh.after(sleep_time, self.checkloop)
+				while GPIO.input(25) == 0: pass
+
 			else:
-				self.b = False
+				# If none of the buttons are pressed just keep
+				# polling.
+				val = round(hx.get_weight(5), 2)
+				hx.power_down()
+				hx.power_up()
+				labelText1.set(str(val))
 				mamdouh.after(sleep_time, self.checkloop)
-			while GPIO.input(24) == 0: pass
 
-		elif GPIO.input(27) == 0:
-			if self.b == False:
-				self.b = True
-				self.format_lbls(right_arrow_lbl)
-
-				mamdouh.after(sleep_time, self.checkloop)
-			else:
-				self.b = False
-				mamdouh.after(sleep_time, self.checkloop)
-			while GPIO.input(27) == 0: pass
-
-		elif GPIO.input(17) == 0:
-			if self.b == False:
-				self.b = True
-				self.format_lbls(up_arrow_lbl)
-
-				mamdouh.after(sleep_time, self.checkloop)
-			else:
-				self.b = False
-				mamdouh.after(sleep_time, self.checkloop)
-			while GPIO.input(17) == 0: pass
-		elif GPIO.input(25) == 0:
-			if self.b == False:
-				self.b = True
-				self.format_lbls(down_arrow_lbl)
-
-				mamdouh.after(sleep_time, self.checkloop)
-			else:
-				self.b = False
-				mamdouh.after(sleep_time, self.checkloop)
-			while GPIO.input(25) == 0: pass
-
-		else:
-			# If none of the buttons are pressed just keep
-			# polling.
-			val = hx.get_weight(5)
-			hx.power_down()
-			hx.power_up()
-			labelText1.set(str(val))
-			mamdouh.after(sleep_time, self.checkloop)
-
-
+		except (KeyboardInterrupt, SystemExit):
+			cleanAndExit()
 
 	def format_lbls(self, activeLabel):
 		# make the active label highlighted and make the

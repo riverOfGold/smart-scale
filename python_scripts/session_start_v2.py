@@ -16,8 +16,8 @@ font_style = "normal"
 small_size = "14"
 large_size = "24"
 
-database1 = "/home/kirk/Documents/smart_scale_read_write/database_files/smart_scale.db"
-database2 = "/home/kirk/Documents/smart_scale_read_write/database_files/trans_data.db"
+database1 = "/home/pi/Documents/database_files/smart_scale.db"
+database2 = "/home/pi/Documents/database_files/trans_data.db"
 
 
 class SessionStartScreen(tk.Frame):

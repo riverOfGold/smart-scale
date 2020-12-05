@@ -26,7 +26,7 @@ def create_connection(db_file):
 
     return None
 
-database = "/home/kirk/Documents/smart_scale_read_write/database_files/smart_scale.db"
+database = "/home/pi/Documents/database_files/smart_scale.db"
 conn = create_connection(database)
 
 class StartScreen(tk.Frame):
@@ -99,7 +99,7 @@ class StartScreen(tk.Frame):
 
         self.clickable_labels = (self.act_date_label, self.act_tank_label, self.act_mode_label,
                             self.start_label, self.settings_label, self.exit_label)
-#        print('here')
+
     def activate_control(self, label_name):
         label_name.config(bg="black", fg="white")
         for label in self.clickable_labels:

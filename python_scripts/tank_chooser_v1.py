@@ -5,7 +5,7 @@ import start_v1 as SS
 import sqlite3
 from datetime import datetime
 
-active_db = "/home/kirk/Documents/smart_scale_read_write/database_files/smart_scale.db"
+active_db = "/home/pi/Documents/database_files/smart_scale.db"
 default_font="Courier"
 font_style = "normal"
 small_size = "14"
@@ -78,7 +78,7 @@ class TankChooser(tk.Frame):
                                                                self.tank_entry.get()))
         self.right_arrow2.bind("<Double-1>", lambda event: self.forward_tank(self.bldg_entry.get(),
                                                                    self.tank_entry.get()))
-        self.back_label.bind("<Double-1>", lambda event: controller.show_frame(SS.StartScreen))
+        self.back_label.bind("<Double-1>", lambda event: controller.show_frame(SS.StartScreen, controller.frames))
 
         self.clickable_labels = (self.left_arrow1, self.left_arrow2, self.right_arrow1, self.right_arrow2,
                                  self.back_label, self.bldg_entry, self.tank_entry)

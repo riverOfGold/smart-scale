@@ -9,8 +9,8 @@ from datetime import datetime
 import time
 import csv
 
-database1 = "/home/kirk/Documents/smart_scale_read_write/database_files/smart_scale.db"
-database2 = "/home/kirk/Documents/smart_scale_read_write/database_files/trans_data.db"
+database1 = "/home/pi/Documents/database_files/smart_scale.db"
+database2 = "/home/pi/Documents/database_files/trans_data.db"
 
 default_font="Courier"
 default_style = "normal"

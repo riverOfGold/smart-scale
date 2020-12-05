@@ -23,7 +23,7 @@ class Splash(tk.Toplevel):
         self.title(" ")
 
         #import the image that the label will use
-        image_path = "/home/kirk/Documents/smart_scale_read_write/lady_justice.jpg"
+        image_path = "/home/pi/Documents/lady_justice.jpg"
         import_icon1  = Image.open(image_path)
         import_icon2 = import_icon1.resize((240,450), Image.ANTIALIAS)
         import_icon3 = ImageTk.PhotoImage(import_icon2)

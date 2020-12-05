@@ -12,7 +12,7 @@ small_size = "14"
 large_size = "24"
 
 mode_tuple=('STANDARD','GRADE','TRANSPORT')
-database_file = "/home/kirk/Documents/smart_scale_read_write/database_files/smart_scale.db"
+database_file = "/home/pi/Documents/database_files/smart_scale.db"
 
 class ModeChooser(tk.Frame):
     def __init__(self, parent, controller):

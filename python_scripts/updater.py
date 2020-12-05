@@ -7,9 +7,9 @@
 # screen's info to reflect any changes the user may have made.
 
 import sqlite3
-database_file1 = '/home/kirk/Documents/smart_scale_read_write/database_files/smart_scale.db'
+database_file1 = '/home/pi/Documents/database_files/smart_scale.db'
 conn1 = sqlite3.connect(database_file1)
-database_file2 = '/home/kirk/Documents/smart_scale_read_write/database_files/trans_data.db'
+database_file2 = '/home/pi/Documents/database_files/trans_data.db'
 conn2 = sqlite3.connect(database_file2)
 
 def screen_updater(screen_to_update, frames_dict):
